@@ -625,3 +625,29 @@ class ModelViewer extends StatefulWidget {
   @override
   State<ModelViewer> createState() => ModelViewerState();
 }
+
+class JavascriptChannel {
+  /// Constructs a JavaScript channel.
+  ///
+  /// The parameters `name` and `onMessageReceived` must not be null.
+  JavascriptChannel({
+    required this.name,
+    required this.onMessageReceived,
+  });
+
+  /// The channel's name.
+  ///
+  /// Passing this channel object as part of a [WebView.javascriptChannels] adds a channel object to
+  /// the JavaScript window object's property named `name`.
+  ///
+  /// The name must start with a letter or underscore(_), followed by any combination of those
+  /// characters plus digits.
+  ///
+  /// Note that any JavaScript existing `window` property with this name will be overriden.
+  ///
+  /// See also [WebView.javascriptChannels] for more details on the channel registration mechanism.
+  final String name;
+
+  /// A callback that's invoked when a message is received through the channel.
+  final Function(JavaScriptMessage) onMessageReceived;
+}
